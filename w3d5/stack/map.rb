@@ -4,7 +4,7 @@ class HashMap
       @hash_arr = hash_arr
     end
 
-    def enqueue(el)
+    def set_key(el)
       # adds an element to the stack
         if @hash_arr.none?{|ele| ele[0] == el[0]}
             @hash_arr << el
@@ -12,7 +12,7 @@ class HashMap
 
     end
 
-    def dequeue
+    def del_key
       # removes one element from the stack
       @hash_arr.shift
     end
