@@ -2,10 +2,9 @@ class Board
   attr_accessor :cups
 
   def initialize(name1, name2)
-    @cups = Array.new(14) 
-    @cups.each {|ele| ele = 4}
-    @cups[6] = nil
-    @cups[13] = nil
+    @cups = Array.new(14) {Array.new(4, :stone)}
+    @cups[6] = []
+    @cups[13] = []
     
 
   end
@@ -18,12 +17,19 @@ class Board
     if start_pos < 0 || start_pos > 13
       raise "Invalid starting cup"
     end
-    if @cups[start_pos].nil? 
+    if self.cups[start_pos] == []
       raise " Starting cup is empty?"
     end
   end
 
   def make_move(start_pos, current_player_name)
+    num_stones = cups[start_pos].length
+    cups[start_pos] = []
+    i = 0
+    while i < num_stones
+      cups[start_pos + i + 1 %14] << :stone
+      i += 1
+    end
   end
 
   def next_turn(ending_cup_idx)
