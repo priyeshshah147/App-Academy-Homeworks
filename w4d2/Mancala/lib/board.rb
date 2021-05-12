@@ -27,7 +27,8 @@ class Board
     cups[start_pos] = []
     i = 0
     while i < num_stones
-      cups[start_pos + i + 1 %14] << :stone
+      new_idx = start_pos + i + 1
+      cups[new_idx %14] << :stone
       i += 1
     end
   end
